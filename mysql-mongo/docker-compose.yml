@@ -7,7 +7,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
     volumes:
-      - ./dbData/mongo:/data/db
+      - mongo:/data/db
     networks:
       - local_network
     ports:
@@ -21,7 +21,7 @@ services:
     networks:
       - local_network
     volumes:
-      - ./dbData/mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
     ports:
       - 3306:3306
     depends_on:
@@ -62,6 +62,10 @@ services:
       - mongodb
     restart: always
     
+
+volumes:
+  mysql:
+  mongo:
 
 networks:
   local_network:
